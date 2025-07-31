@@ -1,0 +1,76 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-carriers
+      author: maksim
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: SELECT COUNT(*) FROM carriers
+      changes:
+        - loadData:
+            file: classpath:csv/Carriers.csv
+            tableName: carriers
+            separator: ","
+            encoding: UTF-8
+
+  - changeSet:
+      id: insert-routes
+      author: maksim
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: SELECT COUNT(*) FROM routes
+      changes:
+        - loadData:
+            file: classpath:csv/Routes.csv
+            tableName: routes
+            separator: ","
+            encoding: UTF-8
+
+  - changeSet:
+      id: insert-roles
+      author: maksim
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: SELECT COUNT(*) FROM roles
+      changes:
+        - loadData:
+            file: classpath:csv/Roles.csv
+            tableName: roles
+            separator: ","
+            encoding: UTF-8
+
+  - changeSet:
+      id: insert-users
+      author: maksim
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: SELECT COUNT(*) FROM users
+      changes:
+        - loadData:
+            file: classpath:csv/Users.csv
+            tableName: users
+            separator: ","
+            encoding: UTF-8
+
+  - changeSet:
+      id: insert-tickets
+      author: maksim
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: SELECT COUNT(*) FROM tickets
+      changes:
+        - loadData:
+            file: classpath:csv/Tickets.csv
+            tableName: tickets
+            separator: ","
+            quotchar: '"'
+            encoding: UTF-8

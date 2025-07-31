@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001
+      author: maksim
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            - tableExists:
+                tableName: ticket_payload
+
+      changes:
+        - createTable:
+            tableName: ticket_payload
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ticket_id
+                  type: bigint
+                  constraints:
+                    nullable: false
